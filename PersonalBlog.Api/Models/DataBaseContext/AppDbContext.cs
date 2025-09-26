@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PersonalBlog.Api.Models.Entities;
 
 namespace PersonalBlog.Api.Models.DataBaseContext
 {
@@ -7,6 +8,7 @@ namespace PersonalBlog.Api.Models.DataBaseContext
         public AppDbContext(DbContextOptions options) : base(options)
         {
         }
+        public DbSet<Blog> blogs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
