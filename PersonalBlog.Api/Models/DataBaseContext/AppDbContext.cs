@@ -8,7 +8,7 @@ namespace PersonalBlog.Api.Models.DataBaseContext
         public AppDbContext(DbContextOptions options) : base(options)
         {
         }
-        public DbSet<Blog> blogs { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
