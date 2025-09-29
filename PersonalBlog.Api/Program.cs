@@ -1,5 +1,9 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalBlog.Api.Models.DataBaseContext;
 using PersonalBlog.Api.Profile;
+using PersonalBlog.Api.Service.Interfaces;
+using PersonalBlog.Api.Service.Services;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,10 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddDbContext<AppDbContext>(option =>
+    option.UseSqlServer(builder.Configuration.GetConnectionString("AppConnection")));
 builder.Services.AddAutoMapper(cfg =>
 {
     cfg.AddProfile<BlogProfile>();
 });
+builder.Services.AddScoped<IBlogService, BlogService>();
 
 
 var app = builder.Build();
