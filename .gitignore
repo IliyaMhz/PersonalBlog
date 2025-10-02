@@ -363,4 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Migration ignored
-**/[Mm]igrations/
+PersonalBlog.Api/[Mm]igrations/
